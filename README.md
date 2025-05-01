@@ -5,7 +5,7 @@ Here’s a sample English description you can use for your GitHub project README
 
 ---
 
-MMO Kotlin Game (LibGDX + Ktor WebSocket)
+<b>MMO Kotlin Game (LibGDX + Ktor WebSocket)</b>
 
 An open-source 2D multiplayer online RPG game built using LibGDX (client) and Ktor (server). The game supports real-time communication over WebSockets and features core MMO mechanics.
 
