@@ -175,18 +175,16 @@
       of your accepting any such warranty or additional liability.
 
    END OF TERMS AND CONDITIONS
-
-   APPENDIX: How to apply the Apache License to your work.
-
-      To apply the Apache License to your work, attach the following
-      boilerplate notice, with the fields enclosed by brackets "[]"
-      replaced with your own identifying information. (Don't include
-      the brackets!)  The text should be enclosed in the appropriate
-      comment syntax for the file format. We also recommend that a
-      file or class name and description of purpose be included on the
-      same "printed page" as the copyright notice for easier
-      identification within third-party archives.
-
+````
+/*
+ * Licencja: Wszelkie prawa zastrzeżone.
+ * Możesz używać, modyfikować, kopiować i dystrybuować ten projekt do własnych celów,
+ * ale nie możesz używać go do celów komercyjnych, chyba że uzyskasz zgodę od autora.
+ * Projekt jest dostarczany "tak jak jest", bez żadnych gwarancji.
+ * Używasz go na własne ryzyko.
+ * Autor: Copyright [2025] [Platefobrain]
+ */
+````
    Copyright [2025] [Platefobrain]
 
    Licensed under the Apache License, Version 2.0 (the "License");
