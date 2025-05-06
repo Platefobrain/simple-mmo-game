@@ -320,3 +320,6 @@ tasks.withType<Jar> {
 kotlin {
     jvmToolchain(21)
 }
+
+
+<img src="https://raw.githubusercontent.com/Platefobrain/Simple-MMO-Game-greenvale/refs/heads/main/character_select.png" alt="Opis obrazu">
