@@ -1,3 +1,12 @@
+/*
+ * Licencja: Wszelkie prawa zastrzeżone.
+ * Możesz używać, modyfikować, kopiować i dystrybuować ten projekt do własnych celów,
+ * ale nie możesz używać go do celów komercyjnych, chyba że uzyskasz zgodę od autora.
+ * Projekt jest dostarczany "tak jak jest", bez żadnych gwarancji.
+ * Używasz go na własne ryzyko.
+ * Autor: Copyright [2025] [Platefobrain]
+ */
+
 package pl.decodesoft
 
 import com.badlogic.gdx.ApplicationAdapter
