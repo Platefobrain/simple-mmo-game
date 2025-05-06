@@ -224,6 +224,7 @@ Players can log in, select or create a character, move around, chat, and fight i
 
 
 ## build.gradle.kts
+``````````
 plugins {
     kotlin("jvm") version "1.9.10"
     application
