@@ -1,4 +1,4 @@
-         # Kotlin MMO Game (LibGDX + Ktor)
+   # Kotlin MMO Game (LibGDX + Ktor)
 
 A simple 2D multiplayer online RPG built with [LibGDX](https://libgdx.com/) and [Ktor](https://ktor.io/) using Kotlin.
 Players can log in, select or create a character, move around, chat, and fight in real-time using WebSocket communication.
