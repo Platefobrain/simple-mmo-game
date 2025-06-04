@@ -24,7 +24,7 @@ Players can log in, create or select characters, move, fight, chat, and level up
 - **Client:** Kotlin + LibGDX  
 - **Server:** Kotlin + Ktor WebSockets  
 - **Networking:** WebSocket with JSON serialization  
-- **Persistence:** JSON file storage (auto-save every 10 seconds)  
+- **Persistence:** JSON file storage (auto-save)  
 - **AI:** Behavior-based enemy AI using state machines and pathfinding  
 
 ---
