@@ -1,0 +1,164 @@
+Kompletny przegląd plików serwerowych
+Modele danych gracza
+CharacterInfo.kt
+
+Serializable model informacji o postaci
+Zawiera ID, nick, klasę, zdrowie, poziom, doświadczenie
+Używany do persystencji postaci w bazie
+
+PlayerData.kt
+
+Runtime model gracza podczas gry
+Metody takeDamage(), heal(), setHealth()
+Rozszerzenie o pozycję, klasę postaci i statystyki
+
+User.kt
+
+Model użytkownika z uwierzytelnianiem
+Lista wielu postaci (MutableList<CharacterInfo>)
+Kompatybilność wsteczna z pojedynczą postacią
+
+System AI przeciwników
+ChaseBehavior.kt
+
+Logika ścigania graczy przez przeciwników
+Inteligentne pathfinding z timer aktualizacji ścieżki
+Sprawdzanie zasięgu i powrót do domu przy utracie celu
+
+IdleBehavior.kt
+
+Patrolowanie obszaru w stanie bezczynności
+Wykrywanie graczy w zasięgu detekcji
+Przełączanie na stan ścigania przy kontakcie
+
+ReturnBehavior.kt
+
+Powrót do pozycji domowej gdy gracz ucieka
+Możliwość ponownego ścigania podczas powrotu
+Teleportacja jako fallback przy braku ścieżki
+
+EnemyManager.kt
+
+Centralny menedżer wszystkich przeciwników
+Koordynuje AI behaviors przez wzorzec Strategy
+System respawnu z zachowaniem poziomu
+Dynamiczne zarządzanie celami i stanami
+
+Modele przeciwników
+Enemy.kt
+
+Prosty data class z companion object
+Automatyczne nazwy polskie przez getDisplayNameForType()
+Podstawowe statystyki: zdrowie, poziom, typ
+
+EnemyState.kt
+
+Enum z trzema stanami: IDLE, CHASE, RETURN
+Czytelna maszyna stanów dla AI
+
+EnemyMovementTarget.kt
+
+Model śledzenia celów ruchu
+Pathfinding data: ścieżka, aktualny indeks
+Timer aktualizacji ścieżki
+
+EnemySpawner.kt
+
+Factory pattern dla tworzenia przeciwników
+Uniwersalna metoda spawnEnemy() z opcjonalnym poziomem
+Automatyczna inicjalizacja AI state i home position
+
+Systemy poziomu i walki
+EnemyLevelManager.kt
+
+Object z logiką skalowania statystyk
+Obliczanie zdrowia i XP na podstawie poziomu
+Generowanie poziomu na podstawie odległości od centrum mapy
+
+LevelManager.kt
+
+System levelowania graczy
+Prosty wzór: 100 * level XP do następnego poziomu
+Automatyczne zwiększanie zdrowia przy awansie
+
+PlayerCombatManager.kt
+
+Centralizowany system walki
+Obliczanie obrażeń według typu ataku
+Rozróżnienie trafień: gracz vs przeciwnik
+Integracja z systemem XP i levelowania
+
+Zarządzanie użytkownikami
+UserManager.kt
+
+Kompletny system uwierzytelniania z bcrypt
+JSON file storage z auto-save co 10 sekund
+System wielopostaciowy (max 3 postacie na konto)
+Walidacja unikalności nicków i slot management
+
+Ruch i pathfinding
+MovementTarget.kt
+
+Model celu ruchu z ścieżką pathfinding
+moveToRange dla ataków wymagających zbliżenia
+Integracja ze systemem walki
+
+PlayerMovementManager.kt
+
+Server-side movement validation
+Pathfinding z fallback przy braku ścieżki
+Broadcast pozycji do wszystkich klientów
+Collision detection z mapą
+
+Mapa i nawigacja
+GameMap.kt
+
+Boolean array dla walkable tiles
+CSV loading z odwróceniem osi Y
+Metody isWalkable() dla pathfinding
+
+NavMesh.kt (pathfinding)
+
+A* algorithm z PriorityQueue
+Node-based pathfinding
+Optymalizowane dla tile-based map
+
+Komunikacja i API
+Modele API (requests/responses)
+
+AuthRequests.kt / AuthResponses.kt - Logowanie/rejestracja
+CharacterRequests.kt / CharacterResponses.kt - Zarządzanie postaciami
+Czysta separacja input/output modeli
+Kotlinx serialization
+
+ServerMessage.kt (ChatManager)
+
+System czatu z historią wiadomości (max 100)
+Broadcast do wszystkich połączeń
+Timestamping wiadomości
+
+Główny serwer
+Main.kt
+
+Ktor server z WebSocket i HTTP endpoints
+ConcurrentHashMap dla thread-safe state management
+Game loop - 20 FPS update rate (17ms interval)
+Routing: /auth, /character endpoints
+WebSocket handlers dla wszystkich typów wiadomości
+
+Główne cechy architektury serwera:
+✅ Thread-safe: ConcurrentHashMap dla współdzielonego stanu
+✅ Separation of Concerns: Dedicated managers dla każdego systemu
+✅ Strategy Pattern: AI behaviors, attack handlers
+✅ Factory Pattern: Enemy spawning, character creation
+✅ Real-time: WebSocket + game loop 20 FPS
+✅ Persistence: JSON file storage z auto-save
+✅ Security: bcrypt password hashing
+✅ Scalable: Modular design, easy to extend
+Obszary do poprawy:
+❌ File storage: JSON zamiast prawdziwej bazy danych
+❌ Hardcoded values: Damage values, speeds, ranges
+❌ No clustering: Single server instance
+❌ Limited error handling: Basic try-catch blocks
+❌ Memory usage: Wszystko w pamięci, brak pagination
+❌ No authentication middleware: Auth sprawdzane per-endpoint
